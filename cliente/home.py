@@ -64,7 +64,7 @@ class Home:
         print(cores.criarTextoTela("---------- TELA DE EXCLUSÃO DE MÓVEL ----------"))
         print()
         print("Insira o ID do móvel abaixo:")
-        id = input(cores.criarTextoOpcoes("ID do móvel: "))
+        id = int(input(cores.criarTextoOpcoes("ID do móvel: ")))
         print()
         print(cores.criarTextoTela("---------- FIM TELA DE EXCLUSÃO DE MÓVEL----------"))
         print()
