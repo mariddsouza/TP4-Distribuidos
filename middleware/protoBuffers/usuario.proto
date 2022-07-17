@@ -1,0 +1,27 @@
+syntax = "proto3";
+
+service Usuario{
+    rpc login (BuscarUsuario) returns (User) {}
+    rpc getTodosUsuarios (BuscarTodosUsuarios) returns (RespostaBuscarTodosUsuarios) {}
+    rpc cadastrarUsuario  (User) returns (RespostaCadastrarUsuario) {}
+}
+
+message BuscarUsuario {
+    int64 cpf = 1;
+    string senha = 2;
+}
+
+message User {
+    string nome = 1;
+    string senha = 2;
+    int64 cpf=3;
+}
+message RespostaCadastrarUsuario{
+    int32 status=1;
+}
+message BuscarTodosUsuarios{}
+
+
+message RespostaBuscarTodosUsuarios {
+    repeated User usuario = 1;
+}

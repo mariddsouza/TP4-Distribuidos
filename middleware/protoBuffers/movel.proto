@@ -1,0 +1,40 @@
+syntax = "proto3";
+
+service Movel{
+    rpc criarMovel (CriarMovel) returns (RespostaCriarMovel) {}
+    rpc excluirMovel(ExcluirMovel) returns (RespostaExcluirMovel) {}
+    rpc buscarMoveis(BuscarMoveis) returns (RespostaBuscarMoveis) {}
+}
+
+message Furniture {
+    int64 id = 1;
+    string nome =2;
+    int64 tempoUso = 3 ;
+    string descricao =4 ;
+}
+
+message CriarMovel {
+    int64 cpf = 1;
+    Furniture movel = 2;
+}
+
+message BuscarMoveis{
+    int64 cpf = 1;
+}
+
+message ExcluirMovel{
+    int64 idMovel = 1;
+    int64 cpf = 2;
+}
+
+message RespostaCriarMovel{
+    int32 status = 1;
+}
+
+message RespostaExcluirMovel{
+    int32 status = 1;
+}
+
+message RespostaBuscarMoveis{
+    repeated Furniture moveis = 1;
+}

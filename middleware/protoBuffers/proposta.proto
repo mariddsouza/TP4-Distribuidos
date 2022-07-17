@@ -1,0 +1,80 @@
+syntax = "proto3";
+
+service proposta{
+    rpc fazerProposta (Proposta) returns (RespostaFazerProposta) {}
+    rpc buscarPropostasRealizadas(BuscarPropostasRealizadas) returns (RespostaBuscarPropostasRealizadas){}
+    rpc buscarPropostasRecebidas(BuscarPropostasRecebidas) returns (RespostaBuscarPropostasRecebidas){}
+    rpc aceitarProposta(AceitarProposta) returns (StatusResposta){}
+    rpc recusarProposta(RecusarProposta) returns (StatusResposta){}
+
+}
+
+
+message Proposta {
+    int64 idMovelRequerido=2;
+    int64 idMovelProposto=3;
+    int64 cpfUsuarioRequisitante=4;
+    int64 cpfUsuarioRequisitado=5;
+}
+
+message Proposta2{
+    int64 idProposta = 1;
+    User2 usuarioAlvo = 2;
+    User2 usuarioRequisitante =3;
+    Furniture2 movelProposto = 4 ;
+    Furniture2 movelRequerido = 5;
+    int64 status = 6;
+}
+
+message Furniture2 {
+    int64 id = 1;
+    string nome =2;
+    int64 tempoUso = 3 ;
+    string descricao =4 ;
+}
+
+
+message User2 {
+    string nome = 1;
+    string senha = 2;
+    int64 cpf=3;
+}
+
+message RespostaFazerProposta{
+    int32 status=1;
+}
+
+message BuscarPropostasRealizadas{
+    int64 cpf = 1;
+}
+
+message RespostaBuscarPropostasRealizadas{
+    repeated Proposta2 propostas = 1;
+}
+
+message BuscarPropostasRecebidas{
+    int64 cpf = 1;
+}
+
+message RespostaBuscarPropostasRecebidas{
+    repeated Proposta2 propostas = 1;
+}
+
+
+message AceitarProposta{
+    int64 id = 1;
+    int64 cpfUsuarioAlvo = 2;
+}
+
+message StatusResposta{
+    int64 status = 1;
+}
+
+message RecusarProposta{
+    int64 id = 1;
+    int64 cpfUsuarioAlvo = 2;
+}
+
+
+
+
